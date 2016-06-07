@@ -10,6 +10,8 @@ E.g. for Rasbian:
     git clone https://github.com/geotheory/freecycle_alerts.git
     cd freecycle
 
+Modify the script with your folder path, groups and search preferences.
+
 Install R - follow generic instructions elsewhere
 
 In R install the following packages: mailR, rvest, dplyr, stringr, tibble.
