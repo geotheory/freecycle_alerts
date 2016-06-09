@@ -1,8 +1,10 @@
-require(rvest)
-require(dplyr)
-require(stringr)
-require(tibble)
-library(methods)
+suppressMessages({
+  require(rvest)
+  require(dplyr)
+  require(stringr)
+  require(tibble)
+  require(methods)
+})
 
 setwd('.../freecycle/')
 
