@@ -1,3 +1,5 @@
+## Script to report all new (since last report) freecycle listings for your groups
+
 suppressMessages({
   require(rvest)
   require(dplyr)
@@ -6,8 +8,10 @@ suppressMessages({
   require(methods)
 })
 
+# modify to reflect your path
 setwd('.../freecycle/')
 
+# extract relevent bit of the URL
 fgroups = c('freecycle-kingston','richmonduponthamesfreecycle')
 
 last_id = readLines('last_daily_id.txt') %>% str_trim()
@@ -31,7 +35,7 @@ for(grp in fgroups){
 
 if(length(report) > 0){
   report = paste0(report, collapse='\n')
-  require(mailR)
+  suppressMessages({ require(mailR) })
   send.mail(from = "myemail@gmail.com", to = "myemail@gmail.com",
             subject = "freecycle alert", body = report,
             smtp = list(host.name = "smtp.gmail.com", port = 465, user.name = "myusername", passwd = "mykey", ssl = TRUE),

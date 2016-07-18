@@ -1,3 +1,5 @@
+## Script to report hits for custom search terms for your freecycle groups
+
 suppressMessages({
   require(rvest)
   require(dplyr)
@@ -6,6 +8,7 @@ suppressMessages({
   require(methods)
 })
 
+# modify to reflect your path
 setwd('.../freecycle/')
 
 search_terms = c('television','sofa','bookcase')
@@ -37,7 +40,7 @@ for(grp in fgroups){
 
 if(length(report) > 0){
   report = paste0(report, collapse='\n')
-  require(mailR)
+  suppressMessages({ require(mailR) })
   send.mail(from = "myemail@gmail.com", to = "myemail@gmail.com",
             subject = "freecycle alert", body = report,
             smtp = list(host.name = "smtp.gmail.com", port = 465, user.name = "myusername", passwd = "mykey", ssl = TRUE),
